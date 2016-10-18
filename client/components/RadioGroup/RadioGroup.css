@@ -1,0 +1,48 @@
+.root {
+  width: 80px;
+}
+
+.option {
+  display: block;
+  background-color: #DDD;
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: 500;
+  line-height: 25px;
+  vertical-align: middle;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 25px;
+  border-bottom: 1px solid #CCC;
+  -webkit-transition: all 0.05s;
+  transition: all 0.1s;
+}
+
+.option:first-of-type {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.option:last-of-type {
+  border-bottom: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.selected {
+  composes: option;
+  /*background-color: #EA2;*/
+  color: white;
+}
+
+.radio {
+  position: absolute;
+  visibility: hidden;
+}
+
+.label {
+  margin-top: 6px;
+  text-align: center;
+  color: #CCC;
+  font-size: 1em;
+}

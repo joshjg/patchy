@@ -1,0 +1,28 @@
+.appear {
+  opacity: 0.01;
+}
+
+.appearActive {
+  opacity: 1;
+  transition: all 400ms ease-in;
+}
+
+.enter {
+  opacity: 0.01;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: opacity 150ms ease-out;
+}
+
+.leave {
+  margin-left: calc(50% - 417px);
+  opacity: 1;
+}
+
+.leaveActive {
+  margin-left: 0;
+  opacity: 0.01;
+  transition: all 150ms ease-in;
+}

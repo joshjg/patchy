@@ -1,0 +1,26 @@
+.root {
+  position: fixed;
+  left: 50px;
+  top: 50px;
+
+  width: 35px;
+  height: 35px;
+
+  box-shadow: 0 0 5px #999;
+  color: #CCC;
+  font-size: 1.8em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 35px;
+  text-align: center;
+  padding-top: 1px;
+  padding-right: 1px;
+  vertical-align: middle;
+
+  border: 1px solid #DDD;
+  border-radius: 100%;
+}
+
+.root:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+}

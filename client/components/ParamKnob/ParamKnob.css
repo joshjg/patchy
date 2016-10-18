@@ -1,0 +1,10 @@
+.root {
+  display: inline-block;
+}
+
+.label {
+  margin-top: -12px;
+  text-align: center;
+  color: #CCC;
+  font-size: 1em;
+}

@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-plusplus": 0,
+    "max-len": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/forbid-prop-types": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "jsx-a11y/no-static-element-interactions": 0
+  }
+}

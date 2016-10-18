@@ -1,0 +1,6 @@
+@import "~normalize.css/normalize.css";
+
+body {
+  background-image: linear-gradient(-90deg, hsl(42, 80%, 92%), hsl(191, 80%, 92%));
+  font-family: Futura, Helvetica, Arial, sans-serif;
+}
