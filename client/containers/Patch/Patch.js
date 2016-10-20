@@ -133,11 +133,16 @@ class Patch extends React.Component {
           <ParamKnob fgColor="#0091B0" min={0} max={2} step={0.05} param="gain" target={osc} targetId={i} onChange={this.props.onChangeOscParam} />
         </Panel>
       ))}
-      {this.props.oscillators.length < MAX_OSC ? <ButtonGroup>
-        <Button onClick={this.props.onClickAddOsc}>
-          Add oscillator
-        </Button>
-      </ButtonGroup> : null}
+
+      {this.props.oscillators.length < MAX_OSC
+        ? <ButtonGroup>
+          <Button onClick={this.props.onClickAddOsc}>
+            Add oscillator
+          </Button>
+        </ButtonGroup>
+        : null
+      }
+
       <Panel
         key="envelope"
         label="ENVELOPE"
@@ -146,12 +151,14 @@ class Patch extends React.Component {
       >
         <ParamKnob width={100} min={0} max={1} step={0.01} param="attack" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
         <ParamKnob width={100} min={0} max={1} step={0.01} param="decay" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
-        <ParamKnob width={100} min={0} max={2} step={0.1} param="sustain" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
+        <ParamKnob width={100} min={0.1} max={2} step={0.1} param="sustain" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
         <ParamKnob width={100} min={0} max={2} step={0.01} param="release" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
       </Panel>
+
       {this.props.effects.map((eff, i) => (
         this.effectPanel(eff, i)
       ))}
+
       <ButtonGroup>
         <Button onClick={() => this.props.onClickAddEffect('filter')} style={{ width: 0 }}>Add filter</Button>
         <Button onClick={() => this.props.onClickAddEffect('distortion')} style={{ width: 0 }}>Add distortion</Button>
