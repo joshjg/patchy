@@ -1,0 +1,40 @@
+.root {
+  position: fixed;
+  right: 35px;
+  bottom: 50px;
+
+  width: 65px;
+  height: 35px;
+
+  box-shadow: 0 0 5px #999;
+  vertical-align: middle;
+
+  border: 1px solid #DDD;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.root:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.higher {
+  composes: root;
+  bottom: calc(33% + 20px);
+}
+
+.icon {
+  width: 40px;
+}
+
+@media (max-width: 1050px) {
+  .root {
+    background-color: hsl(42, 80%, 92%);
+  }
+
+  .higher {
+    background-color: hsl(42, 80%, 92%);
+  }
+}

@@ -1,7 +1,22 @@
-import { UPDATE_USERS, SET_USER_ID, SHOW_HELP, HIDE_HELP } from './constants';
+import {
+  UPDATE_USERS,
+  SET_USER_ID,
+  SHOW_KEYBOARD,
+  HIDE_KEYBOARD,
+  SHOW_HELP,
+  HIDE_HELP,
+  SHOW_USERS,
+  HIDE_USERS,
+} from './constants';
 import { MUTE_USER, UNMUTE_USER } from '../User/constants';
 
-const room = (state = { users: [], mutedUsers: [], helpVisible: false }, action) => {
+const room = (state = {
+  users: [],
+  mutedUsers: [],
+  keyboardVisible: false,
+  helpVisible: false,
+  usersVisible: false,
+}, action) => {
   switch (action.type) {
     case UPDATE_USERS:
       return {
@@ -31,6 +46,16 @@ const room = (state = { users: [], mutedUsers: [], helpVisible: false }, action)
         ],
       };
     }
+    case SHOW_KEYBOARD:
+      return {
+        ...state,
+        keyboardVisible: true,
+      };
+    case HIDE_KEYBOARD:
+      return {
+        ...state,
+        keyboardVisible: false,
+      };
     case SHOW_HELP:
       return {
         ...state,
@@ -40,6 +65,16 @@ const room = (state = { users: [], mutedUsers: [], helpVisible: false }, action)
       return {
         ...state,
         helpVisible: false,
+      };
+    case SHOW_USERS:
+      return {
+        ...state,
+        usersVisible: true,
+      };
+    case HIDE_USERS:
+      return {
+        ...state,
+        usersVisible: false,
       };
     default:
       return state;

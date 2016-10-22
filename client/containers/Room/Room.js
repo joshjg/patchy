@@ -1,10 +1,15 @@
+/* eslint-disable react/jsx-indent */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 
 import Synth from '../Synth';
 import Patch from '../Patch';
+import Keyboard from '../Keyboard';
+import KeyboardButton from '../../components/KeyboardButton';
 import UserList from '../../components/UserList';
+import UsersButton from '../../components/UsersButton';
 import Logo from '../../components/Logo';
 import Modal from '../../components/Modal';
 import HelpButton from '../../components/HelpButton';
@@ -16,8 +21,12 @@ import {
   updateUsers,
   receivePatch,
   stopIfMuted,
+  showKeyboard,
+  hideKeyboard,
   showHelp,
   hideHelp,
+  showUsers,
+  hideUsers,
 } from './actions';
 
 class Home extends React.Component {
@@ -32,9 +41,15 @@ class Home extends React.Component {
     receiveAction: React.PropTypes.func,
     receivePatch: React.PropTypes.func,
     localPatch: React.PropTypes.object,
+    showKeyboard: React.PropTypes.func,
+    hideKeyboard: React.PropTypes.func,
+    keyboardVisible: React.PropTypes.bool,
     showHelp: React.PropTypes.func,
     hideHelp: React.PropTypes.func,
     helpVisible: React.PropTypes.bool,
+    showUsers: React.PropTypes.func,
+    hideUsers: React.PropTypes.func,
+    usersVisible: React.PropTypes.bool,
   };
 
   componentDidMount = () => {
@@ -52,15 +67,29 @@ class Home extends React.Component {
       <Logo />
       <Patch />
       <Synth />
-      <UserList users={this.props.users} />
-      {this.props.helpVisible ?
-        <Modal onClickRemove={this.props.hideHelp}>
-          <ReactMarkdown
-            skipHtml
-            source={helpMarkdown}
-            transformImageUri={() => keymapImage}
-          />
-        </Modal>
+      {this.props.keyboardVisible
+        ? <div>
+            <Keyboard />
+            <KeyboardButton disable onClick={this.props.hideKeyboard} />
+          </div>
+        : <KeyboardButton onClick={this.props.showKeyboard} />
+      }
+      {this.props.keyboardVisible
+        ? <div style={{ height: '34vh' }} />
+        : <div style={{ height: '100px' }} />
+      }
+      {this.props.usersVisible
+        ? <UserList users={this.props.users} onClickRemove={this.props.hideUsers} />
+        : <UsersButton onClick={this.props.showUsers} />
+      }
+      {this.props.helpVisible
+        ? <Modal onClickRemove={this.props.hideHelp}>
+            <ReactMarkdown
+              skipHtml
+              source={helpMarkdown}
+              transformImageUri={() => keymapImage}
+            />
+          </Modal>
         : <HelpButton onClick={this.props.showHelp} />
       }
     </div>
@@ -72,7 +101,9 @@ const mapStateToProps = state => ({
   mutedUsers: state.root.mutedUsers,
   userId: state.root.id,
   localPatch: state.patch.local,
+  keyboardVisible: state.root.keyboardVisible,
   helpVisible: state.root.helpVisible,
+  usersVisible: state.root.usersVisible,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -80,8 +111,12 @@ const mapDispatchToProps = dispatch => ({
   updateUsers: users => dispatch(updateUsers(users)),
   receiveAction: (action, mutedUsers) => dispatch(stopIfMuted(action, mutedUsers)),
   receivePatch: ({ from, patch }) => dispatch(receivePatch(from, patch)),
+  showKeyboard: () => dispatch(showKeyboard()),
+  hideKeyboard: () => dispatch(hideKeyboard()),
   showHelp: () => dispatch(showHelp()),
   hideHelp: () => dispatch(hideHelp()),
+  showUsers: () => dispatch(showUsers()),
+  hideUsers: () => dispatch(hideUsers()),
 });
 
 export default connect(

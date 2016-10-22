@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === 'staging') {
       appMountId: 'root',
       mobile: true,
     }),
-    new FaviconsWebpackPlugin('./client/assets/favicon.png'),
+    // new FaviconsWebpackPlugin('./client/assets/favicon.png'),
   ];
 }
 

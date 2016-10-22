@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import MediaQuery from 'react-responsive';
 import Panel from '../../components/Panel';
 import ParamKnob from '../../components/ParamKnob';
 import RadioGroup from '../../components/RadioGroup';
@@ -30,6 +31,7 @@ class Patch extends React.Component {
     onClickRemoveEffect: React.PropTypes.func,
     onChangeEffectParam: React.PropTypes.func,
   };
+
   effectPanel = (eff, i) => {
     switch (eff.effect) {
       case 'filter':
@@ -83,17 +85,18 @@ class Patch extends React.Component {
       case 'compressor':
         return (
           <Panel key={eff.key} label="COMPRESSOR" onClickRemove={() => this.props.onClickRemoveEffect(i)}>
-            <ParamKnob width={100} min={-100} max={0} step={1} param="threshold" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
-            <ParamKnob width={100} min={0} max={40} step={1} param="knee" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
-            <ParamKnob width={100} min={1} max={20} step={1} param="ratio" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
-            <ParamKnob width={100} min={0} max={1} step={0.001} param="attack" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
-            <ParamKnob width={100} min={0} max={1} step={0.01} param="release" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
+            <ParamKnob small min={-100} max={0} step={1} param="threshold" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
+            <ParamKnob small min={0} max={40} step={1} param="knee" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
+            <ParamKnob small min={1} max={20} step={1} param="ratio" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
+            <ParamKnob small min={0} max={1} step={0.001} param="attack" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
+            <ParamKnob small min={0} max={1} step={0.01} param="release" target={eff} targetId={i} onChange={this.props.onChangeEffectParam} />
           </Panel>
         );
       default:
         return null;
     }
-  }
+  };
+
   render = () => (
     <ReactCSSTransitionGroup
       transitionName={{
@@ -134,13 +137,12 @@ class Patch extends React.Component {
         </Panel>
       ))}
 
-      {this.props.oscillators.length < MAX_OSC
-        ? <ButtonGroup>
+      {(this.props.oscillators.length < MAX_OSC) &&
+        <ButtonGroup>
           <Button onClick={this.props.onClickAddOsc}>
             Add oscillator
           </Button>
         </ButtonGroup>
-        : null
       }
 
       <Panel
@@ -149,22 +151,32 @@ class Patch extends React.Component {
         removable={false}
         height={125}
       >
-        <ParamKnob width={100} min={0} max={1} step={0.01} param="attack" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
-        <ParamKnob width={100} min={0} max={1} step={0.01} param="decay" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
-        <ParamKnob width={100} min={0.1} max={2} step={0.1} param="sustain" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
-        <ParamKnob width={100} min={0} max={2} step={0.01} param="release" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
+        <ParamKnob small min={0} max={1} step={0.01} param="attack" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
+        <ParamKnob small min={0} max={1} step={0.01} param="decay" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
+        <ParamKnob small min={0.1} max={2} step={0.1} param="sustain" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
+        <ParamKnob small min={0} max={2} step={0.01} param="release" target={this.props.oscillators[0]} targetId={-1} onChange={this.props.onChangeOscParam} />
       </Panel>
 
       {this.props.effects.map((eff, i) => (
         this.effectPanel(eff, i)
       ))}
 
-      <ButtonGroup>
-        <Button onClick={() => this.props.onClickAddEffect('filter')} style={{ width: 0 }}>Add filter</Button>
-        <Button onClick={() => this.props.onClickAddEffect('distortion')} style={{ width: 0 }}>Add distortion</Button>
-        <Button onClick={() => this.props.onClickAddEffect('convolver')} style={{ width: 0 }}>Add reverb</Button>
-        <Button onClick={() => this.props.onClickAddEffect('compressor')} style={{ width: 0 }}>Add compressor</Button>
-      </ButtonGroup>
+      <MediaQuery minWidth={636}>
+        <ButtonGroup>
+          <Button onClick={() => this.props.onClickAddEffect('filter')} style={{ width: 0 }}>Add filter</Button>
+          <Button onClick={() => this.props.onClickAddEffect('distortion')} style={{ width: 0 }}>Add distortion</Button>
+          <Button onClick={() => this.props.onClickAddEffect('convolver')} style={{ width: 0 }}>Add reverb</Button>
+          <Button onClick={() => this.props.onClickAddEffect('compressor')} style={{ width: 0 }}>Add compressor</Button>
+        </ButtonGroup>
+      </MediaQuery>
+      <MediaQuery maxWidth={635}>
+        <ButtonGroup>
+          <Button onClick={() => this.props.onClickAddEffect('filter')} style={{ width: 0 }}>Filter</Button>
+          <Button onClick={() => this.props.onClickAddEffect('distortion')} style={{ width: 0 }}>Distortion</Button>
+          <Button onClick={() => this.props.onClickAddEffect('convolver')} style={{ width: 0 }}>Reverb</Button>
+          <Button onClick={() => this.props.onClickAddEffect('compressor')} style={{ width: 0 }}>Compressor</Button>
+        </ButtonGroup>
+      </MediaQuery>
     </ReactCSSTransitionGroup>
   );
 }

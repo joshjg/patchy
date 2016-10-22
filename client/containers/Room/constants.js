@@ -1,5 +1,9 @@
 export const SET_USER_ID = 'SET_USER_ID';
 export const UPDATE_USERS = 'UPDATE_USERS';
 export const RECEIVE_PATCH = 'RECEIVE_PATCH';
+export const SHOW_KEYBOARD = 'SHOW_KEYBOARD';
+export const HIDE_KEYBOARD = 'HIDE_KEYBOARD';
 export const SHOW_HELP = 'SHOW_HELP';
 export const HIDE_HELP = 'HIDE_HELP';
+export const SHOW_USERS = 'SHOW_USERS';
+export const HIDE_USERS = 'HIDE_USERS';

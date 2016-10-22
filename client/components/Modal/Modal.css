@@ -19,7 +19,8 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 750px;
+  width: 80%;
+  max-width: 750px;
   height: 75%;
   max-height: 800px;
   transform: translate(-50%, -50%);

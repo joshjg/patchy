@@ -1,6 +1,6 @@
 {
   "name": "patchy",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "",
   "scripts": {
     "start": "babel-node server/index.js",
@@ -17,7 +17,7 @@
     "c"
   ],
   "author": "Joshua Goldman",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/joshjg/patchy/issues"
   },
@@ -40,7 +40,7 @@
     "eslint-plugin-react": "^6.3.0",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.22.0",
+    "html-webpack-plugin": "^2.24.0",
     "html-webpack-template": "^5.3.0",
     "json-loader": "^0.5.4",
     "normalize.css": "^5.0.0",
@@ -48,11 +48,12 @@
     "raw-loader": "^0.5.1",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
-    "react-canvas-knob": "^0.2.3",
+    "react-canvas-knob": "^0.3.0",
     "react-css-modules": "^3.7.10",
     "react-dom": "^15.3.2",
     "react-markdown": "^2.4.2",
     "react-redux": "^4.4.5",
+    "react-responsive": "^1.2.1",
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.6",
     "react-transform-catch-errors": "^1.0.2",

@@ -2,10 +2,10 @@ import React from 'react';
 import cssModule from 'react-css-modules';
 import styles from './Panel.css';
 
-const Panel = ({ label, removable, onClickRemove, height, children, ...others }) => (
-  <div styleName="root" style={{ height: `${height}px` }}>
+const Panel = ({ label, removable, onClickRemove, height, children }) => (
+  <div styleName="root" style={{ minHeight: `${height}px` }}>
     <div styleName="label">
-      {removable ? <div styleName="button" onClick={onClickRemove}>&times;</div> : null}
+      {removable && <div styleName="button" onClick={onClickRemove}>&times;</div>}
       {label}
     </div>
     {children}

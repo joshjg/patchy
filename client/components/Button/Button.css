@@ -20,3 +20,9 @@
   background-color: #F7F7F7;
   cursor: pointer;
 }
+
+@media (max-width: 460px) {
+  .root {
+    font-size: 0.9em;
+  }
+}

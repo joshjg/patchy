@@ -6,13 +6,22 @@ import volumeOff from '../../assets/volume_off.svg';
 
 const User = ({ id, self, muted, listener, toggle, ...others }) => (
   <div {...others}>
-    {self || listener ? null : <img
-      alt="toggle mute"
-      src={muted ? volumeOff : volumeUp}
-      height={20}
-      style={{ display: 'inline', position: 'relative', float: 'left', marginLeft: '6px', marginRight: '-30px', marginTop: '-2px' }}
-      onClick={() => toggle(muted)}
-    />}
+    {(!self && !listener) &&
+      <img
+        alt="toggle mute"
+        src={muted ? volumeOff : volumeUp}
+        height={20}
+        style={{
+          display: 'inline',
+          position: 'relative',
+          float: 'left',
+          marginLeft: '6px',
+          marginRight: '-30px',
+          marginTop: '-2px',
+        }}
+        onClick={() => toggle(muted)}
+      />
+    }
     {id}{self ? ' (You)' : ''}{listener ? ' (Listener)' : ''}
   </div>
 );

@@ -1,4 +1,4 @@
-const middleware = store => next => (action) => {
+export default store => next => (action) => {
   if (store.getState().root.id === action.userId) {
     const newAction = {
       ...action,
@@ -14,5 +14,3 @@ const middleware = store => next => (action) => {
   };
   return next(newAction);
 };
-
-export default middleware;

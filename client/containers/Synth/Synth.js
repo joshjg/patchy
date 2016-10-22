@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-indent */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { addSound, removeSound } from './actions';
@@ -95,11 +97,11 @@ class Synth extends React.Component {
               release={osc.release}
             >
               <Gain gain={osc.gain}>
-                {(typeof AudioContext.createStereoPanner) === 'function' ? (
-                  <Panner pan={osc.pan}>
-                    {this.renderEffect(this.props.patches[sound.userId].effects, 0)}
-                  </Panner>
-                  ) : this.renderEffect(this.props.patches[sound.userId].effects, 0)
+                {(typeof AudioContext.createStereoPanner) === 'function'
+                  ? <Panner pan={osc.pan}>
+                      {this.renderEffect(this.props.patches[sound.userId].effects, 0)}
+                    </Panner>
+                  : this.renderEffect(this.props.patches[sound.userId].effects, 0)
                 }
               </Gain>
             </Oscillator>
@@ -116,8 +118,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleKeyDown: e => dispatch(addSound(e)),
-  handleKeyUp: e => dispatch(removeSound(e)),
+  handleKeyDown: e => dispatch(addSound(e.which)),
+  handleKeyUp: e => dispatch(removeSound(e.which)),
 });
 
 export default connect(

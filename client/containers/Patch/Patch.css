@@ -22,7 +22,7 @@
 }
 
 .leaveActive {
-  margin-left: 0;
+  margin-left: -500px;
   opacity: 0.01;
   transition: all 150ms ease-in;
 }

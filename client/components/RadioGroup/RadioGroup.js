@@ -5,7 +5,7 @@ import cssModule from 'react-css-modules';
 import styles from './RadioGroup.css';
 
 const RadioGroup = props => (
-  <div styleName="root">
+  <div styleName="root" style={props.style}>
     {Object.keys(props.options).map(opt => (
       <label
         key={props.options[opt]}
@@ -32,6 +32,7 @@ RadioGroup.propTypes = {
   options: React.PropTypes.object.isRequired,
   label: React.PropTypes.string,
   activeColor: React.PropTypes.string,
+  style: React.PropTypes.object,
 };
 
 RadioGroup.defaultProps = {

@@ -2,8 +2,12 @@ import {
   SET_USER_ID,
   UPDATE_USERS,
   RECEIVE_PATCH,
+  SHOW_KEYBOARD,
+  HIDE_KEYBOARD,
   SHOW_HELP,
   HIDE_HELP,
+  SHOW_USERS,
+  HIDE_USERS,
 } from './constants';
 import { ADD_SOUND, REMOVE_SOUND } from '../Synth/constants';
 
@@ -31,10 +35,26 @@ export const stopIfMuted = (action, mutedUsers) => {
   return action;
 };
 
+export const showKeyboard = () => ({
+  type: SHOW_KEYBOARD,
+});
+
+export const hideKeyboard = () => ({
+  type: HIDE_KEYBOARD,
+});
+
 export const showHelp = () => ({
   type: SHOW_HELP,
 });
 
 export const hideHelp = () => ({
   type: HIDE_HELP,
+});
+
+export const showUsers = () => ({
+  type: SHOW_USERS,
+});
+
+export const hideUsers = () => ({
+  type: HIDE_USERS,
 });

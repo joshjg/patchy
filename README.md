@@ -7,9 +7,14 @@ Patchy is a modular synthesizer that you can play in real-time with anyone in th
 * Add effects in any order
 * Play with your computer keyboard
 * Low latency
+* Multi-touch keyboard for mobile devices
 
 Built with React, Redux, web audio APIs and Socket.io
 
+### New in version 0.2.0
+* Fully mobile and touch compatible, with on-screen keyboard
+* Toggleable user list
+* Code cleaned up
 
 ### Keymapping
 ![keymap](http://i.imgur.com/FFJc31J.png)
@@ -21,7 +26,6 @@ Simply send your current URL to anyone - all they have to do is connect to it.
 Click on the volume icon next to the user's id in the user list
 
 ### Upcoming features
-* Mobile-friendly touch keyboard
 * Octave shortcut keys
 * LFO modulation
 * Save and share patches
@@ -31,7 +35,6 @@ Click on the volume icon next to the user's id in the user list
 * MIDI keyboard support
 
 ### Known Issues
-* No mobile version yet
 * Reverb can be glitchy
 * Panning doesn't have any effect in Safari
 * Distorted sound in Safari

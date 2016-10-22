@@ -1,11 +1,11 @@
 import { ADD_SOUND, REMOVE_SOUND } from './constants';
 
-export const addSound = e => ({
+export const addSound = key => ({
   type: ADD_SOUND,
-  key: e.which,
+  key,
 });
 
-export const removeSound = e => ({
+export const removeSound = key => ({
   type: REMOVE_SOUND,
-  key: e.which,
+  key,
 });
